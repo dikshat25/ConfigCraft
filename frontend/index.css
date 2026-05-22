@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark mode (default) */
+    --bg: #080808;
+    --surface: #111111;
+    --surface2: #181818;
+    --surface3: #202020;
+    --border: rgba(255,255,255,0.06);
+    --border2: rgba(255,255,255,0.12);
+    --border3: rgba(255,255,255,0.18);
+    --emerald: #00D97E;
+    --emerald-dim: rgba(0,217,126,0.10);
+    --emerald-glow: rgba(0,217,126,0.25);
+    --amber: #F5A623;
+    --amber-dim: rgba(245,166,35,0.10);
+    --danger: #EF4444;
+    --danger-dim: rgba(239,68,68,0.10);
+    --text: #F0EDE8;
+    --text2: #A09C98;
+    --text3: #5A5754;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+  }
+
+  [data-theme="light"] {
+    --bg: #F7F5F2;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE8;
+    --surface3: #E8E4DF;
+    --border: rgba(0,0,0,0.06);
+    --border2: rgba(0,0,0,0.10);
+    --border3: rgba(0,0,0,0.16);
+    --emerald: #00A86B;
+    --emerald-dim: rgba(0,168,107,0.08);
+    --emerald-glow: rgba(0,168,107,0.20);
+    --amber: #D4870A;
+    --amber-dim: rgba(212,135,10,0.08);
+    --danger: #DC2626;
+    --danger-dim: rgba(220,38,38,0.08);
+    --text: #1A1714;
+    --text2: #6B6460;
+    --text3: #A09C98;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Custom Scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border3);
+  border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text3);
+}
