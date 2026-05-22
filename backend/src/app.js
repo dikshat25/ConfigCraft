@@ -15,53 +15,89 @@ import csvRoutes from './modules/csv/csv.routes.js';
 
 const app = express();
 
-// Fix for __dirname in ES Modules
+// Fix __dirname for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Frontend build path
+const frontendPath = path.join(__dirname, '../../frontend/dist');
+
+// ======================
 // Middleware
-app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
-  credentials: true
-}));
+// ======================
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || '*',
+    credentials: true
+  })
+);
 
 app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
 app.use('/api', apiLimiter);
 
+// ======================
 // Health Check
+// ======================
+
 app.get('/api/health', (req, res) => {
   res.json({
+    success: true,
     status: 'ok',
     timestamp: new Date().toISOString()
   });
 });
 
+// ======================
 // Static API Routes
+// ======================
+
 app.use('/api/auth', authRoutes);
 app.use('/api/configs', configRoutes);
 app.use('/api/csv', csvRoutes);
 
+// ======================
 // Dynamic Route Engine
+// ======================
+
 initDynamicRouteEngine(app);
 
-// Serve React Frontend Build
-app.use(
-  express.static(
-    path.join(__dirname, '../../frontend/dist')
-  )
-);
+// ======================
+// Serve Frontend
+// ======================
 
+app.use(express.static(frontendPath));
+
+// ======================
 // React Router Fallback
+// ======================
+
 app.get('*', (req, res) => {
-  res.sendFile(
-    path.join(__dirname, '../../frontend/dist/index.html')
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
+// ======================
+// 404 API Handler
+// ======================
+
+app.use('/api/*', (req, res) => {
+  return apiResponse.error(
+    res,
+    'API Route not found',
+    'NOT_FOUND',
+    {},
+    404
   );
 });
 
+// ======================
 // Global Error Handler
+// ======================
+
 app.use(errorHandler);
 
 export default app;
