@@ -1,11 +1,7 @@
-Diagnosis › Build Error
+[build]
+builder = "NIXPACKS"
 
-Run automatically
-
-Rewrite the railway.toml to use valid Railway config-as-code format. The build failed because the config file sets builder to "NIXPACKS" (not a valid value) and uses [phases.*] sections that are Nixpacks-specific and not recognized by Railway. These invalid settings caused the build to fail after only a few steps, never running the intended install or build commands.
-
-
-Create Pull Request
-
-Continue in Chat
-Read config-as-code docs
+[deploy]
+startCommand = "cd backend && npm start"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
