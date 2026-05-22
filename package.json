@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "install-all": "cd frontend && npm install && cd ../backend && npm install",
-    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install && npx prisma generate",
+    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install && DATABASE_URL=\"postgresql://dummy:dummy@localhost:5432/dummy\" npx prisma generate",
     "start": "cd backend && npm start"
   }
 }
