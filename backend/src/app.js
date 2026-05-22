@@ -67,20 +67,6 @@ app.use('/api/csv', csvRoutes);
 initDynamicRouteEngine(app);
 
 // ======================
-// Serve Frontend
-// ======================
-
-app.use(express.static(frontendPath));
-
-// ======================
-// React Router Fallback
-// ======================
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(frontendPath, 'index.html'));
-});
-
-// ======================
 // 404 API Handler
 // ======================
 
@@ -92,6 +78,20 @@ app.use('/api/*', (req, res) => {
     {},
     404
   );
+});
+
+// ======================
+// Serve Frontend
+// ======================
+
+app.use(express.static(frontendPath));
+
+// ======================
+// React Router Fallback
+// ======================
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
 // ======================
