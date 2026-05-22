@@ -1,21 +1,11 @@
-[build]
-builder = "NIXPACKS"
+Diagnosis › Build Error
 
-[deploy]
-startCommand = "cd backend && node server.js"
-restartPolicyType = "ON_FAILURE"
+Run automatically
 
-[phases.setup]
-nixPkgs = ["nodejs"]
+Rewrite the railway.toml to use valid Railway config-as-code format. The build failed because the config file sets builder to "NIXPACKS" (not a valid value) and uses [phases.*] sections that are Nixpacks-specific and not recognized by Railway. These invalid settings caused the build to fail after only a few steps, never running the intended install or build commands.
 
-[phases.install]
-cmds = [
-  "cd frontend && npm install",
-  "cd backend && npm install"
-]
 
-[phases.build]
-cmds = [
-  "cd backend && npx prisma generate",
-  "cd frontend && npm run build"
-]
+Create Pull Request
+
+Continue in Chat
+Read config-as-code docs
