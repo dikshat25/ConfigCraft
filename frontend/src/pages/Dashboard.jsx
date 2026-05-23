@@ -4,7 +4,7 @@ import { useConfig } from '../hooks/useConfig';
 import { useT } from '../hooks/useT';
 import PageWrapper from '../components/layout/PageWrapper';
 import Spinner from '../components/ui/Spinner';
-import { Plus, LayoutGrid, Calendar, Hash } from 'lucide-react';
+import { Plus, LayoutGrid, Calendar, Hash, Github } from 'lucide-react';
 
 export default function Dashboard() {
   const { configs, loadConfigs, loading } = useConfig();
@@ -76,12 +76,24 @@ export default function Dashboard() {
           <h1 className="font-syne text-[28px] font-extrabold text-text-primary tracking-[-1px] leading-[1.1]">{t('dashboard')}</h1>
           <p className="text-[14px] text-text-secondary mt-1">Manage your config-driven applications</p>
         </div>
-        <button 
-          onClick={() => navigate('/configs/new')}
-          className="flex items-center justify-center bg-accent-emerald text-black font-medium px-5 py-2.5 rounded-sm shadow-[0_0_16px_var(--emerald-glow)] hover:opacity-85 hover:-translate-y-[1px] transition-all duration-250 whitespace-nowrap"
-        >
-          <Plus size={16} className="mr-2" /> {t('newApp')}
-        </button>
+        <div className="flex items-center gap-4">
+          <a
+            href="https://github.com/dikshat25/ConfigCraft"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors duration-200"
+            title="View on GitHub"
+          >
+            <Github size={20} />
+            <span className="text-[14px] font-medium hidden sm:inline">GitHub</span>
+          </a>
+          <button 
+            onClick={() => navigate('/configs/new')}
+            className="flex items-center justify-center bg-accent-emerald text-black font-medium px-5 py-2.5 rounded-sm shadow-[0_0_16px_var(--emerald-glow)] hover:opacity-85 hover:-translate-y-[1px] transition-all duration-250 whitespace-nowrap"
+          >
+            <Plus size={16} className="mr-2" /> {t('newApp')}
+          </button>
+        </div>
       </div>
 
       {renderContent()}

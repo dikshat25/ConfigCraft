@@ -22,7 +22,7 @@ export default function Landing() {
         <nav className="flex items-center gap-8 hidden md:flex">
           <a href="#features" className="font-sans text-[14px] text-text-secondary hover:text-text-primary transition-colors duration-200">Features</a>
           <a href="#about" className="font-sans text-[14px] text-text-secondary hover:text-text-primary transition-colors duration-200">About</a>
-          <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className="font-sans text-[14px] text-text-secondary hover:text-text-primary transition-colors duration-200">GitHub</a>
+          <a href="https://github.com/dikshat25/ConfigCraft" target="_blank" rel="noopener noreferrer" className="font-sans text-[14px] text-text-secondary hover:text-text-primary transition-colors duration-200">GitHub</a>
         </nav>
 
         <button 
@@ -61,7 +61,7 @@ export default function Landing() {
               Start Building &rarr;
             </button>
             <button 
-              onClick={() => window.open('https://github.com/your-repo', '_blank')}
+              onClick={() => window.open('https://github.com/dikshat25/ConfigCraft', '_blank')}
               className="bg-transparent border border-border-emphasis text-text-secondary font-medium px-[26px] py-[13px] rounded-sm hover:border-border-subtle hover:text-text-primary transition-colors duration-200 w-full sm:w-auto"
             >
               View on GitHub
